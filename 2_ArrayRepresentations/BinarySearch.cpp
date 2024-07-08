@@ -1,3 +1,4 @@
+//this is Binary Search
 #include <iostream>
 int binarySearch(int arr[],int low,int high,int x){
     while(low<=high){
@@ -20,4 +21,8 @@ int main(){
     int n=sizeof(arr)/sizeof(arr[0]);
     int result=binarySearch(arr,0,n-1,x);
     printf("%d\n",result);
+    if (result != -1)
+        printf("Element is present at index %d", result);
+    else
+        printf("Element is not present in array");
 }
