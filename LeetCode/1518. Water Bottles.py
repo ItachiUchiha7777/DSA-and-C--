@@ -13,6 +13,6 @@ class Solution(object):
             c+=div
 
         return c
-            
+        
            
            
