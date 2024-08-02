@@ -7,6 +7,9 @@ struct Array
     int size;
     int length;
 };
+
+//Display
+
 void Display(struct Array  arr){
     int i;
     printf("\nElement are:\n");
@@ -14,6 +17,9 @@ void Display(struct Array  arr){
         printf("%d ",arr.A[i]);
     }
 }
+
+//Insert 
+
 void Insert(struct Array *arr,int index, int x){
     if (index>=0 && index<=arr->length){
     for( int i=arr->length;i>index;i--){
@@ -23,6 +29,8 @@ void Insert(struct Array *arr,int index, int x){
         arr->length++; 
     }    
 }
+
+//Delete
 
 int Delete(struct Array *arr,int index )
 {
@@ -39,13 +47,18 @@ int Delete(struct Array *arr,int index )
     return 0;
 };
 
+//swap
+
 void swap(int *x, int *y){
     int temp=*x;
     *x=*y;
     *y=temp;
 }
 
-int LinearSearcher(struct  Array *arr,int key){
+//Linear search
+
+
+int LinearSearcher(struct  Array *arr,int key){ //
 int i;
 for(int i=0;i<arr->length;i++){
     if(key==arr->A[i]){
@@ -57,8 +70,27 @@ return -1;
 }
 
 
+//Binary Search
+int BinarySearch(struct Array arr,int key){
+    int l,m,h; //low mid high
+    l=0;
+    h=arr.length-1;
+    while(l<=h){
+        m=(l+h)/2; 
+            if(key==arr.A[m])
+            return m;
+            else if(key<arr.A[m])
+            h=m-1;
+            else 
+            l=m+1;
+    }
+
+        return -1;
+}
+
 int main(){
 struct Array arr={{2,3,4,5,6},10,5};
+printf("%d\n",BinarySearch(arr,3));
 Insert(&arr,5,10);
 Delete(&arr,0);
 
