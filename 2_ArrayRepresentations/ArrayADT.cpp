@@ -124,7 +124,7 @@ int Get(struct Array arr,int index){
 
 //Set function - changes value at the index
 
-void Set(struct Array *arr,int index,int value){
+void SetF(struct Array *arr,int index,int value){
     if (index<arr->length && index>=0)
         arr->A[index]=value;
 }
@@ -142,16 +142,38 @@ int Max(struct Array arr){
 
 //Min function
 int Min(struct Array arr){
-    int max=arr.A[0];
+    int min=arr.A[0];
     for(int i=0;i<arr.length;i++){
-        if(max<arr.A[i])max=arr.A[i];
+        if(min>arr.A[i])min=arr.A[i];
     }
-    return max;
+    return min;
+}
+
+//Sum function
+int Sum(struct Array arr){
+    int sum=0;
+    for(int i=0;i<arr.length;i++){
+        sum+=arr.A[i];
+        }
+        return sum;
+}
+
+//Average function
+float Average(struct Array arr){
+    return (float)Sum(arr)/arr.length;
 }
 
 int main()
 {
     struct Array arr = {{2, 3, 4, 5, 6}, 10, 5};
+    SetF(&arr,0,9);
+    
+    Display(arr);
+    printf("%d\n", Sum(arr));
+
+
+
+
     printf("%d\n", BinarySearch(arr, 3));
     printf("%d\n", RecBinarySearch(arr.A, 0, arr.length, 3));
 
