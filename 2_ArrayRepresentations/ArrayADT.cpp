@@ -88,9 +88,30 @@ int BinarySearch(struct Array arr,int key){
         return -1;
 }
 
+
+
+//Reverse Binary Search
+int RecBinarySearch(int a[] ,int l,int h,int key){
+    int m; //mid
+    if(l<=h){
+        m=(l+h)/2;
+        if(key==a[m])
+            return m;
+        else if(key<a[m])
+            return RecBinarySearch(a,l,m-1,key);
+        else
+            return RecBinarySearch(a,m+1,h,key);
+    }
+    return -1;
+}
+
+
+
 int main(){
 struct Array arr={{2,3,4,5,6},10,5};
 printf("%d\n",BinarySearch(arr,3));
+printf("%d\n",RevBinarySearch(arr.A,0,arr.length,3));
+
 Insert(&arr,5,10);
 Delete(&arr,0);
 
