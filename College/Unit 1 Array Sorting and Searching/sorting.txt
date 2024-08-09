@@ -1,0 +1,14 @@
+Criteria For Analysis of Sorting Algorithms
+
+
+
+Time Complexity-: general, O(N log N) is considered a better algorithm time complexity than O(N 2), and most of our algorithms’ time complexity revolves around these two. 
+,We observe the time complexity of an algorithm to see which algorithm works efficiently for larger data sets
+
+Space Complexity:-space complexity criterion helps us compare the space the algorithm uses to sort any data set. 
+Stability:-stability of an algorithm is judged by the fact whether the order of the elements having equal status when sorted on some basis is preserved or not.
+Internal & External Sorting Algorithms:- internal sorting method--all the data is laoded in the memory
+external-all the data is not loaded in the memory
+Adaptivity--already sorted data takes less time
+Recursiveness---recursive is uses recursoin
+
