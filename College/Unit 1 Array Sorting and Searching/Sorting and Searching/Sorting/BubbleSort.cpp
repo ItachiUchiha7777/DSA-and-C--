@@ -32,7 +32,7 @@ void bubbleSortAdaptive(int *A,int n){
                 int temp=A[j];
                 A[j]=A[j+1];
                 A[j+1]=temp;
-                isSorted=0
+                isSorted=0;
             }
         }
         if(isSorted){
