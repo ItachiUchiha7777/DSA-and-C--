@@ -14,11 +14,22 @@ void create(int A[],int n){
     last=first;
 
     for(i=1;i<n;i++){
-        t=(struct Node *)malloc(sizeof(struct Node));
-        t->data=A[i];
-        t->next=NULL;
+        first=(struct Node *)malloc(sizeof(struct Node));
+        first->data=A[0];
+        first->next=NULL;
         last->next=t;
-        last=t;
+        last=first;
+
+        for(i=1;i<n;i++){
+            t=(struct Node*)*malloc(sizeof(struct Node));
+            
+               t->data=A[i];
+               t->next
+            
+            
+        };
+
+
     }
     
 };
