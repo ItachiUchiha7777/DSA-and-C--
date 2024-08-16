@@ -39,7 +39,7 @@ class LinkedList:
         if self.length==0:
             self.head=None
             self.tail=None
-        return temp
+        return temp.value
     def prepend(self,value):
         pass
     def insert(self,value):
@@ -47,7 +47,8 @@ class LinkedList:
 myLL=LinkedList(4)
 myLL.append(10)
 print(myLL.print_list())
-myLL.pop()
+print(myLL.pop())
+
 print(myLL.print_list())
 
         
