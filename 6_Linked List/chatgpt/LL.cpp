@@ -30,6 +30,26 @@ public:
     void display();
 };
 
+void LL :: removeAt(int position){
+    if(head==nullptr) return;
+    if(position==0){
+        Node* temp=head;
+        head=head->next;
+        delete  temp;
+        return ;
+    }
+
+    Node* temp=head;
+    for(int i=0;i<position-1 && temp!= nullptr ;i++){
+        temp=temp->next;
+    }
+    if(temp!=nullptr && temp->next!=nullptr){
+        Node* nodeToDelete = temp->next;
+        temp->next = temp->next->next;
+        delete nodeToDelete;  // Delete the node
+    }
+}
+
 void LL :: append(int value)
 {
     Node *newNode = new Node(value);
@@ -55,6 +75,7 @@ void LL::display(){
 }
 int main() {
     LL list;
+    
     list.append(10);
     list.append(20);
     list.append(30);
