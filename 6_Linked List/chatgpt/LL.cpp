@@ -30,6 +30,24 @@ public:
     void display();
 };
 
+void LL::pop(){   //remove  the last element
+    if(head==nullptr) return ;
+    if(head->next=nullptr){
+        delete head;
+        head=nullptr;
+        return;
+    }
+    Node* temp = head;
+    // Traverse to the second last node
+    while (temp->next->next != nullptr) {
+        temp = temp->next;
+    }
+    // Delete the last node
+    delete temp->next;
+    temp->next = nullptr;
+}
+
+
 void LL :: removeAt(int position){
     if(head==nullptr) return;
     if(position==0){
