@@ -76,7 +76,7 @@ void LL :: append(int value)
         head = newNode;
     }else{
         Node* temp=head;
-        while(temp->next != nullptr){
+        while(temp->next != NULL){
             temp=temp->next;
         }
         temp->next=newNode;
@@ -97,6 +97,8 @@ int main() {
     list.append(10);
     list.append(20);
     list.append(30);
+    list.removeAt(1);
+
     list.display();
     return 0;
 }
