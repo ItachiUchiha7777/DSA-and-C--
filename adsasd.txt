@@ -1,0 +1,173 @@
+Single File Programming Question
+Problem Statement
+
+
+
+Nandha wants to delete a range of nodes between two given positions in a singly linked list. Write a program that takes input for the size of the linked list, the elements of the linked list, the start position, and the end position. The program should delete the nodes between the specified positions and display the updated linked list.
+
+
+
+Company Tags: TCS
+
+Input format :
+The first line contains an integer 'n' representing the size of the linked list.
+
+The second line contains 'n' space-separated integers representing the elements of the linked list.
+
+The third line contains an integer 'S' representing the start position.
+
+The fourth line contains an integer 'E' representing the end position.
+
+Output format :
+The first line of output displays "Linked List before deletion: " followed by the linked list before deletion.
+
+The second line of output displays "Linked List after deletion: " followed by the linked list after deletion.
+
+
+
+Refer to the sample output for formatting specifications.
+
+Code constraints :
+1 ≤ n ≤ 100
+
+-50000 ≤ elements ≤ 50000
+
+1 ≤ S ≤ 100
+
+1 ≤ E ≤ 100
+
+Sample test cases :
+Input 1 :
+5
+1 2 3 4 5
+1
+3
+Output 1 :
+Linked List before deletion: 1 2 3 4 5 
+Linked List after deletion: 4 5 
+Input 2 :
+5
+-50000 50000 4000 3676 7263
+1
+5
+Output 2 :
+Linked List before deletion: -50000 50000 4000 3676 7263 
+Linked List after deletion: all the elements are deleted
+
+
+
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+class Node {
+public:
+    int data;
+    Node* next;
+    Node(int val) : data(val), next(nullptr) {}
+};
+
+class LinkedList {
+private:
+    Node* head;
+
+public:
+    LinkedList() : head(nullptr) {}
+
+    void append(int data) {
+        Node* new_node = new Node(data);
+        if (!head) {
+            head = new_node;
+            return;
+        }
+        Node* last = head;
+        while (last->next) {
+            last = last->next;
+        }
+        last->next = new_node;
+    }
+
+    void deleteRange(int start, int end) {
+        if (!head) return;
+
+        // If start is 1, update head
+        if (start == 1) {
+            Node* current = head;
+            for (int i = 0; i < end && current; ++i) {
+                Node* temp = current;
+                current = current->next;
+                delete temp;
+            }
+            head = current;
+            return;
+        }
+
+        // Traverse to the node before start position
+        Node* current = head;
+        for (int i = 0; i < start - 2 && current; ++i) {
+            current = current->next;
+        }
+
+        // Delete nodes from start to end
+        if (current && current->next) {
+            Node* temp = current->next;
+            for (int i = 0; i < end - start + 1 && temp; ++i) {
+                Node* to_delete = temp;
+                temp = temp->next;
+                delete to_delete;
+            }
+            current->next = temp;
+        }
+    }
+
+    void display() {
+        Node* current = head;
+        while (current) {
+            cout << current->data << " ";
+            current = current->next;
+        }
+        cout << endl;
+    }
+
+    bool isEmpty() {
+        return head == nullptr;
+    }
+
+    ~LinkedList() {
+        Node* current = head;
+        while (current) {
+            Node* temp = current;
+            current = current->next;
+            delete temp;
+        }
+    }
+};
+
+int main() {
+    int n, start, end;
+    cin >> n;
+
+    LinkedList llist;
+    for (int i = 0; i < n; ++i) {
+        int element;
+        cin >> element;
+        llist.append(element);
+    }
+
+    cin >> start >> end;
+
+    cout << "Linked List before deletion: ";
+    llist.display();
+
+    llist.deleteRange(start, end);
+
+    cout << "Linked List after deletion: ";
+    if (!llist.isEmpty()) {
+        llist.display();
+    } else {
+        cout << "all the elements are deleted" << endl;
+    }
+
+    return 0;
+}
