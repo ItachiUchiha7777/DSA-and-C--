@@ -38,6 +38,7 @@ public:
             return -1;
         }
         Node *temp = top;
+        top=top->next;
         int poppedValue = top->data;
         delete temp;
     }
@@ -71,5 +72,16 @@ public:
 
 int main()
 {
+    Stack s;
+    s.push(10);
+    s.push(20);
+    s.push(30);
+    s.display();
+    cout << "Top element is: " << s.peek() << endl;
+    s.pop();
+    s.display();
+
+    cout << "Top element is: " << s.peek() << endl;
+
     return 0;
 }
