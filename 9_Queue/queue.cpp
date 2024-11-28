@@ -63,6 +63,15 @@ public:
     {
         return front == NULL;
     }
+
+    void display(){
+        node *temp=front;
+        while (temp!=NULL)
+        {
+            cout<<temp->data<<" ";
+            temp=temp->next;
+        }
+    }
 };
 
 int main()
@@ -71,6 +80,7 @@ int main()
     q.push(1);
     q.push(2);
     q.push(3);
+    q.display();
     cout << "Front element: " << q.peeek() << endl;
     q.pop();
     cout << "after pop: " << q.peeek() << endl;
